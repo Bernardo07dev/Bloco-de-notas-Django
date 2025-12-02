@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Título do Documento</title>
+</head>
+
+<body style="display: flex; flex-direction: column; width: 100%;">
+    <a href="/" style="padding: 20px; border-radius:10px; background:#e01c1c; color:white; list-style: none; ">
+        Voltar
+    </a>
+    <h1>Edite os campos:</h1>
+    <form action="/editar/" method="post" style="width:60%; border-radius: 15px; padding: 20px; background-color:#FFFFFF; gap:0;">
+        {% csrf_token %}
+            <input type="hidden" name="nota_id" value="{{ id }}">
+            <p>Título:</p>
+            <input name="new_titulo" style="padding: 15px; width: 97%; border: #FFFFFF; border-radius: 10px; background-color: rgba(186, 186, 186, 0.296);" placeholder="Insira seu título"></input>
+            <p>Nota:</p>
+            <input name="new_nota" placeholder="Insira sua nota" style="padding: 15px; width: 97%; border: #FFFFFF; border-radius: 10px; background-color: rgba(186, 186, 186, 0.296);"></input>
+            <button type="submit" style="cursor: pointer; padding: 15px; width: 97%; margin-top: 30px;">Editar Nota</button>
+    </form>
+</body>
+</html>

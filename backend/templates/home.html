@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Título do Documento</title>
+</head>
+<body style="display: flex; flex-direction: column; width: 100%;">
+    <h1>Bloco de Notas</h1>
+    <div class="infos">
+        <form action="/processar/" method="post">
+            {% csrf_token %}
+            <input name="title" type="text" placeholder="Titulo">
+            <input name="note" type="text" placeholder="Insira sua nota aqui"></input>
+            <button type="submit">Salvar</button>
+        </form>
+
+        <div class="notas" style="display: flex; flex-direction: row; width: 100%; margin-top: 40px; background-color: #D4D4D4;">
+            {% for item in notas%}
+                <form class="nota" method="post" action="/CRUD/" style="display: flex; flex-direction: column; border-radius: 15px; padding: 20px; background-color:#FFFFFF; gap:0; justify-content: center; align-items: center;">
+                    {% csrf_token %}
+                    <input type="hidden" name="nota_id" value="{{ item.id }}">
+                    <button type="submit" name="action" value="apagar" style="display: flex; justify-content: end; width: 100%; font-size: 22px; align-items: baseline; color:red; cursor: pointer; background-color: #FFFFFF;">X</button>
+                    <h3 style="margin: 0px;">{{ item.title }}</h3>
+                    <p>{{ item.note }}</p>
+                    <span style="font-size: 12px; margin: 0px;">{{ item.created_at }}</span>
+                    <button type="submit" name="action" value="editar" style="margin-top: 20px; width: 50%; cursor: pointer;">Editar</button>
+                </form>
+            {% empty %}
+                <p>Nenhuma nota cadastrada ainda.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+</body>
+</html>
