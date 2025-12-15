@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-q1b5upaxc7t=bp86%hta1ve)m12p$o7&r#y$**j#7hx2)9sxu*
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'bloco-de-notas-django.onrender.com'
+    'bloco-de-notas-django.onrender.com',
+    '127.0.0.1'
 ]
 
 
@@ -114,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
